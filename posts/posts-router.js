@@ -18,8 +18,8 @@ router.get("/api/posts", (req, res) => {
 router.get("/api/posts/:id", (req, res) => {
 	db.findById(req.params.id)
 		.then((post) => {
-			if (post) {
-				res.status(200).json(post)
+			if (post[0]) {
+				res.status(200).json(post[0])
 			} else {
 				res.status(404).json({
 					message: "The post with the specified ID does not exist."

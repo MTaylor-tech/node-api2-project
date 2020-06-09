@@ -68,7 +68,7 @@ router.put("/api/posts/:id", (req, res) => {
       return db.findById(postId.id)
     })
     .then((post) => {
-      if (post) {
+      if (post.length>0) {
 				res.status(200).json(post)
 			} else {
 				res.status(404).json({

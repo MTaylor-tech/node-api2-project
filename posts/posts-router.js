@@ -130,7 +130,7 @@ router.get("/api/posts/:id/comments", (req, res)=> {
 router.get("/api/posts/:id/comments/:commentId", (req, res)=> {
   db.findCommentById(req.params.commentId)
     .then((comment)=> {
-      if (!comment) {
+      if (comment.length<=0) {
         res.status(404).json({
           errorMessage: "Comment not found"
         })
@@ -149,7 +149,7 @@ router.get("/api/posts/:id/comments/:commentId", (req, res)=> {
 router.post("/api/posts/:id/comments", (req, res)=> {
   db.findById(req.params.id)
     .then((post)=> {
-      if (!post) {
+      if (post.length<=0) {
         res.status(404).json({
           message: "The post with the specified ID does not exist."
         })
